@@ -3,11 +3,11 @@ import 'package:contact_app/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'models/contacts_manager.dart';
 
 class AddContactSheet extends StatefulWidget {
-  const AddContactSheet({super.key, required this.onAddContact});
-
-  final Function(ContactModel) onAddContact;
+  const AddContactSheet({super.key});
 
   @override
   State<AddContactSheet> createState() => _AddContactSheetState();
@@ -43,7 +43,10 @@ class _AddContactSheetState extends State<AddContactSheet> {
         image: selectedImage?.path ?? "",
       );
 
-      widget.onAddContact(newContact);
+      Provider.of<ContactsManager>(
+        context,
+        listen: false,
+      ).addContact(newContact);
       Navigator.pop(context);
     } else {
       showErrorDialog("Please fill all the data! 🚨");
