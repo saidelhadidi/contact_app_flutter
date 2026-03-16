@@ -1,6 +1,6 @@
 # Dynamic Contact App 🪪✨
 
-A feature-rich Contact Management application built with Flutter. This project showcases the transition from static UI to interactive applications that handle user input, media files, and smooth animations.
+A feature-rich Contact Management application built with Flutter. This project showcases the transition from static UI to interactive applications, handling user input, media files, and implementing scalable state management.
 
 ## 🎯 Key Technical Milestones
 
@@ -8,12 +8,15 @@ A feature-rich Contact Management application built with Flutter. This project s
 * **🎬 Interactive Animations:** Enhanced the User Experience (UX) by integrating `Lottie` animations to provide visual feedback when the contact list is empty.
 * **📐 Modern Grid Layout:** Utilized `GridView.builder` with a custom `SliverGridDelegate` to create a responsive and organized 2-column display for contact cards.
 * **📥 Seamless User Input:** Implemented a `ModalBottomSheet` for adding new contacts, featuring real-time preview of user data using `TextEditingControllers`.
-* **⚙️ State Management & Logic:** Managed dynamic list operations (Adding/Deleting contacts) using `setState` to ensure a reactive and responsive interface.
+
+* **⚙️ Scalable State Management (Provider):** Migrated from local `setState` to the `provider` package. Centralized the business logic within a `ChangeNotifier` to completely decouple data management from the UI.
+* **⚡ Performance Optimization:** Refactored the main screen to a `StatelessWidget` and utilized `Consumer` widgets. This prevents expensive full-screen rebuilds, ensuring only specific UI components update when the state changes.
 * **🎨 Sophisticated UI Design:** - Used `Gradients` and `ClipRRect` for polished visuals.
-    - Implemented a detailed `ContactInfo` screen with `extendBodyBehindAppBar` for a modern, immersive look.
+  - Implemented a detailed `ContactInfo` screen with `extendBodyBehindAppBar` for a modern, immersive look.
 
 ## 🛠️ Tech Stack & Packages Used
 * **UI Framework:** Flutter (Material Design).
+* **State Management:** `provider`.
 * **Animations:** `lottie`.
 * **Media:** `image_picker`.
 * **Icons:** `font_awesome_flutter` & `cupertino_icons`.
