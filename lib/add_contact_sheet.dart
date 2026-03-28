@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:contact_app/models/app_assets.dart';
+import 'package:contact_app/models/app_strings.dart';
 import 'package:contact_app/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -21,13 +23,11 @@ class _AddContactSheetState extends State<AddContactSheet> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    // بنطلب منه يفتح الجاليري ويستنى (await) لحد ما اليوزر يختار
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image != null) {
-      // لو اليوزر اختار صورة فعلاً، بنعمل update للشاشة
       setState(() {
-        selectedImage = File(image.path); // حولنا الصورة لملف وخزناها
+        selectedImage = File(image.path);
       });
     }
   }
@@ -49,7 +49,7 @@ class _AddContactSheetState extends State<AddContactSheet> {
       ).addContact(newContact);
       Navigator.pop(context);
     } else {
-      showErrorDialog("Please fill all the data! 🚨");
+      showErrorDialog(AppStrings.fillAllDataError);
       return;
     }
   }
@@ -60,14 +60,14 @@ class _AddContactSheetState extends State<AddContactSheet> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Color(0xFFFFF1D4),
-          title: Text("Error ⚠️", style: TextStyle(color: Color(0xFF29384D))),
+          title: Text(AppStrings.errorTitle, style: TextStyle(color: Color(0xFF29384D))),
           content: Text(message, style: TextStyle(color: Color(0xFF29384D))),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("OK", style: TextStyle(color: Colors.red)),
+              child: Text(AppStrings.ok, style: TextStyle(color: Colors.red)),
             ),
           ],
         );
@@ -104,7 +104,6 @@ class _AddContactSheetState extends State<AddContactSheet> {
                 ),
                 child: Row(
                   spacing: 20,
-
                   children: [
                     Expanded(
                       flex: 1,
@@ -115,10 +114,9 @@ class _AddContactSheetState extends State<AddContactSheet> {
                             border: Border.all(color: Color(0xFFFFF1D4)),
                             borderRadius: BorderRadius.circular(28),
                           ),
-
                           child: selectedImage == null
                               ? Lottie.asset(
-                                  "assets/animations/image_picker.json",
+                                  AppAssets.imagePickerAnim,
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(28),
@@ -130,7 +128,6 @@ class _AddContactSheetState extends State<AddContactSheet> {
                         ),
                       ),
                     ),
-
                     Expanded(
                       flex: 2,
                       child: Column(
@@ -138,20 +135,19 @@ class _AddContactSheetState extends State<AddContactSheet> {
                         children: [
                           Text(
                             nameController.text.isEmpty
-                                ? "User Name"
+                                ? AppStrings.userNameHint
                                 : nameController.text,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               overflow: TextOverflow.ellipsis,
-
                               color: Color(0xFFFFF1D4),
                             ),
                           ),
                           Divider(color: Color(0xFFFFF1D4)),
                           Text(
                             mailController.text.isEmpty
-                                ? "example@email.com"
+                                ? AppStrings.emailHint
                                 : mailController.text,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -162,7 +158,7 @@ class _AddContactSheetState extends State<AddContactSheet> {
                           Divider(color: Color(0xFFFFF1D4)),
                           Text(
                             numberController.text.isEmpty
-                                ? "+201000000000"
+                                ? AppStrings.phoneHint
                                 : numberController.text,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -182,13 +178,12 @@ class _AddContactSheetState extends State<AddContactSheet> {
                   TextFormField(
                     style: TextStyle(color: Colors.white),
                     textInputAction: TextInputAction.next,
-
                     onChanged: (value) {
                       setState(() {});
                     },
                     controller: nameController,
                     decoration: InputDecoration(
-                      hintText: "Enter Name",
+                      hintText: AppStrings.enterName,
                       hintStyle: TextStyle(color: Color(0xFFE2F4F6)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -204,15 +199,13 @@ class _AddContactSheetState extends State<AddContactSheet> {
                   TextFormField(
                     style: TextStyle(color: Colors.white),
                     textInputAction: TextInputAction.next,
-
                     onChanged: (value) {
                       setState(() {});
                     },
                     controller: mailController,
                     decoration: InputDecoration(
-                      hintText: "Enter Email",
+                      hintText: AppStrings.enterEmail,
                       hintStyle: TextStyle(color: Color(0xFFE2F4F6)),
-
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(color: Color(0xFFFFF1D4)),
@@ -232,7 +225,7 @@ class _AddContactSheetState extends State<AddContactSheet> {
                     },
                     controller: numberController,
                     decoration: InputDecoration(
-                      hintText: "Enter Phone",
+                      hintText: AppStrings.enterPhone,
                       hintStyle: TextStyle(color: Color(0xFFE2F4F6)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -259,7 +252,7 @@ class _AddContactSheetState extends State<AddContactSheet> {
                       onPressed: () {
                         saveContact();
                       },
-                      child: Text("Enter User", style: TextStyle(fontSize: 20)),
+                      child: Text(AppStrings.enterUser, style: TextStyle(fontSize: 20)),
                     ),
                   ),
                 ],

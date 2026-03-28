@@ -1,5 +1,7 @@
 import 'package:contact_app/add_contact_sheet.dart';
 import 'package:contact_app/contact_card.dart';
+import 'package:contact_app/models/app_assets.dart';
+import 'package:contact_app/models/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/icons/home_icon.png",
+                    AppAssets.homeIcon,
                     height: 50,
                     fit: BoxFit.contain,
                   ),
@@ -39,9 +41,9 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(height: 80),
-                            Lottie.asset('assets/animations/empty_list.json'),
+                            Lottie.asset(AppAssets.emptyListAnim),
                             Text(
-                              "There is No Contacts Added Here",
+                              AppStrings.noContacts,
                               style: TextStyle(
                                 color: Color(0xFFFFF1D4),
                                 fontSize: 20,

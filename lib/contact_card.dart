@@ -1,4 +1,5 @@
 import 'package:contact_app/contact_info.dart';
+import 'package:contact_app/models/app_assets.dart';
 import 'package:contact_app/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -38,7 +39,7 @@ class ContactCard extends StatelessWidget {
                     height: double.infinity,
                     child: contact.image.isEmpty
                         ? Image.asset(
-                            "assets/icons/splash_icon.png",
+                            AppAssets.splashIcon,
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,

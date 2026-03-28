@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:contact_app/models/app_assets.dart';
+import 'package:contact_app/models/app_strings.dart';
 import 'package:contact_app/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -45,7 +47,7 @@ class ContactInfo extends StatelessWidget {
                     height: double.infinity,
                     child: contact.image.isEmpty
                         ? Image.asset(
-                            "assets/icons/splash_icon.png",
+                            AppAssets.splashIcon,
                             fit: BoxFit.cover,
                           )
                         : (contact.image.contains('assets')
@@ -155,7 +157,7 @@ class ContactInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Phone Number",
+                            AppStrings.phoneNumberLabel,
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 14,
@@ -195,7 +197,7 @@ class ContactInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Email Address",
+                            AppStrings.emailAddressLabel,
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 14,
@@ -236,11 +238,11 @@ class ContactInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Notes",
+                            AppStrings.notesLabel,
                             style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                           Text(
-                            "Add your notes here...",
+                            AppStrings.addNotesHint,
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 14,
